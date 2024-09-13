@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void calcularAreaYPerimetro(double radio, double &area, double &perimetro) {
+    area = M_PI * radio * radio;
+    perimetro = 2 * M_PI * radio;
+}
+
+int main() {
+    double radio, area, perimetro;
+    cout << "Introduce el radio de la circunferencia: ";
+    cin >> radio;
+
+    calcularAreaYPerimetro(radio, area, perimetro);
+
+    cout << "Area: " << area << endl;
+    cout << "Perimetro: " << perimetro << endl;
+
+    return 0;
+}
