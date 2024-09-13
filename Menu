@@ -1,0 +1,361 @@
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+#include <locale>
+#include <cctype>
+
+using namespace std;
+
+// 1. Calcular el cuadrado de un número
+void mostrarBienvenidaCuadrado() {
+    printf(" ____       _                  _       \n");
+    printf("|  _ \\ ___ | |_ ___ _ __   ___(_) __ _ \n");
+    printf("| |_) / _ \\| __/ _ \\ '_ \\ / __| |/ _` |\n");
+    printf("|  __/ (_) | ||  __/ | | | (__| | (_| |\n");
+    printf("|_|   \\___/ \\__\\___|_| |_|\\___|_|\\__,_|\n");
+    printf("\n");
+    printf("%cBienvenido al calculador para potencias!\n", 173); 
+    printf("Por favor ingrese el n%cmero base a potenciar ac%c abajo: \n ", 163, 160); 
+}
+
+int calcularCuadrado(int numero) {
+    return pow(numero, 2);
+}
+
+void ejercicio1() {
+    mostrarBienvenidaCuadrado();
+    int numero;
+    cout << "Ingrese el número a elevar al cuadrado: ";
+    cin >> numero;
+    int resultado = calcularCuadrado(numero);
+    printf("El cuadrado de %d es: %d\n", numero, resultado);
+}
+
+// 2.
+void mostrarBienvenidaMedia() {
+    printf(" __  __          _ _       \n");
+    printf("|  \\/  | ___  __| (_) __ _ \n");
+    printf("| |\\/| |/ _ \\/ _` | |/ _` |\n");
+    printf("| |  | |  __/ (_| | | (_| |\n");
+    printf("|_|  |_|\\___|\\__,_|_|\\__,_|\n");
+    printf("\n");
+    printf("%cBienvenido al calculador de la media de dos n%cmeros!\n", 173, 163); 
+}
+
+double calcularMedia(double num1, double num2) {
+    return (num1 + num2) / 2;
+}
+
+void ejercicio2() {
+    mostrarBienvenidaMedia();
+    double numero1, numero2;
+    printf("Ingrese el primer n%cmero ac%c: \n ", 163, 160); 
+    cin >> numero1;
+    printf("Ahora ingrese el siguiente n%cmero por favor: \n ", 163); 
+    cin >> numero2;
+    double media = calcularMedia(numero1, numero2);
+    printf("La media de los n%cmeros ingresados es: %.2f\n", 163, media);
+}
+
+// 3.
+void mostrarBienvenidaNumeroLetras() {
+    printf(" _   _   __                                \n");
+    printf("| \\ | |_/_/_ _ __ ___   ___ _ __ ___  ___ \n");
+    printf("|  \\| | | | | '_ ` _ \\ / _ \\ '__/ _ \\/ __|\n");
+    printf("| |\\  | |_| | | | | | |  __/ | | (_) \\__ \\\n");
+    printf("|_| \\_|\\__,_|_| |_| |_|\\___|_|  \\___/|___/\n");
+    printf("\n");
+    printf("%cBienvenido al conversor de n%cmeros a texto!\n", 173, 163);
+    printf("Por favor ingrese un n%cmero del 1 al 10: ", 163); 
+}
+
+void mostrarNumeroEnLetras(int numero) {
+    switch (numero) {
+        case 1: cout << "Uno" << endl; break;
+        case 2: cout << "Dos" << endl; break;
+        case 3: cout << "Tres" << endl; break;
+        case 4: cout << "Cuatro" << endl; break;
+        case 5: cout << "Cinco" << endl; break;
+        case 6: cout << "Seis" << endl; break;
+        case 7: cout << "Siete" << endl; break;
+        case 8: cout << "Ocho" << endl; break;
+        case 9: cout << "Nueve" << endl; break;
+        case 10: cout << "Diez" << endl; break;
+        default: printf("N%cmero fuera del rango establecido \n", 163); break;
+    }
+}
+
+void ejercicio3() {
+    mostrarBienvenidaNumeroLetras();
+    int numero;
+    cin >> numero;
+    mostrarNumeroEnLetras(numero);
+    printf("%cDeseas ingresar otro n%cmero? (si/no) \n", 168, 163);
+    string respuesta;
+    cin >> respuesta;
+    if (respuesta != "si" && respuesta != "SI") {
+        return;
+    }
+}
+
+// 4. 
+void mostrarBienvenidaTemperatura() {
+    printf(" ____               _           \n");
+    printf("/ ___|_ __ __ _  __| | ___  ___ \n");
+    printf("| |  _| '__/ _` |/ _` |/ _ \\/ __|\n");
+    printf("| |_| | | | (_| | (_| | (_) \\__ \\\n");
+    printf(" \\____|_|  \\__,_|\\__,_|\\___/|___/\n");
+    printf("\n");
+    printf("%cBienvenido al conversor de temperaturas!\n", 173); 
+}
+
+double celsiusAFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32;
+}
+
+double celsiusAKelvin(double celsius) {
+    return celsius + 273.15;
+}
+
+void mostrarMenu(double& celsius) {
+    int opcion;
+    do {
+        printf("\nElija la conversi%cn deseada:\n", 162); 
+        printf("'1' Para convertir a Fahrenheit\n");
+        printf("'2' Para convertir a Kelvin\n");
+        printf("'3' Para volver a ingresar temperatura\n");
+        printf("4. Salir\n");
+        printf("Ingrese una de las opciones: ");
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: {
+                double fahrenheit = celsiusAFahrenheit(celsius);
+                printf("La temperatura convertida a Fahrenheit es: %.2f\n", fahrenheit);
+                break;
+            }
+            case 2: {
+                double kelvin = celsiusAKelvin(celsius);
+                printf("La temperatura en grados Kelvin es: %.2f\n", kelvin);
+                break;
+            }
+            case 3: {
+                printf("Por favor ingrese la nueva temperatura en grados Celsius: ");
+                cin >> celsius;
+                break;
+            }
+            case 4:
+                printf("%cGracias por usar el conversor de temperaturas!\n", 173); // '¡'
+                break;
+            default:
+                printf("Opción no válida. Por favor intente de nuevo.\n");
+        }
+    } while (opcion != 4);
+}
+
+void ejercicio4() {
+    mostrarBienvenidaTemperatura();
+    double celsius;
+    printf("Por favor ingrese la temperatura en grados Celsius o cent%cgrados: ", 161); // 'º'
+    cin >> celsius;
+    mostrarMenu(celsius);
+}
+
+// 5.
+void mostrarMenuParImpar() {
+    cout << "********** BIENVENIDO **********" << endl;
+    cout << "1. Ingresar un número" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Seleccione una opción: ";
+}
+
+void determinarEJER(int numero) {
+    if (numero % 2 == 0) {
+        cout << "El número " << numero << " es par." << endl;
+    } else {
+        cout << "El número " << numero << " es impar." << endl;
+    }
+}
+
+void ejercicio5() {
+    int opcion;
+    int numero;
+    do {
+        mostrarMenuParImpar();
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese un número: ";
+                cin >> numero;
+                determinarEJER(numero);
+                break;
+            case 2:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opción no válida. Intente de nuevo." << endl;
+                break;
+        }
+        cout << endl; 
+    } while (opcion != 2);
+}
+
+// 6. 
+void mostrarMenuTabla() {
+    cout << "********** BIENVENIDO **********" << endl;
+    cout << "1. TABLA DE MULTIPLICAR" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Seleccione una opción: ";
+}
+
+void mostrarTabla(int numero) {
+    cout << "INGRESE UN NUMERO " << numero << ":" << endl;
+    for (int i = 1; i <= 10; ++i) {
+        cout << numero << " x " << i << " = " << numero * i << endl;
+    }
+}
+
+void ejercicio6() {
+    int opcion;
+    int numero;
+    do {
+        mostrarMenuTabla();
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese un número: ";
+                cin >> numero;
+                mostrarTabla(numero);
+                break;
+            case 2:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opción no válida. Intente de nuevo." << endl;
+                break;
+        }
+        cout << endl; 
+    } while (opcion != 2);
+}
+
+// 7.
+bool esNumero(char c) {
+    return isdigit(c); 
+}
+
+void mostrarNO() {
+    cout << "********** BIENVENIDO **********" << endl;
+    cout << "1. Verificar si un carácter es un número" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Seleccione una opción: ";
+}
+
+void ejercicio7() {
+    int opcion;
+    char caracter;
+    do {
+        mostrarNO();
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese un carácter: ";
+                cin >> caracter;
+
+                if (esNumero(caracter)) {
+                    cout << "El carácter '" << caracter << "' es un número." << endl;
+                } else {
+                    cout << "El carácter '" << caracter << "' no es un número." << endl;
+                }
+                break;
+            case 2:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opción no válida. Intente de nuevo." << endl;
+                break;
+        }
+        cout << endl; 
+    } while (opcion != 2);
+}
+
+// 9. 
+void calcularCircunferencia() {
+    double radio;
+    const double PI = 3.14159265358979323846;
+    cout << "Ingrese el radio de la circunferencia: ";
+    cin >> radio;
+    double area = PI * radio * radio;
+    double perimetro = 2 * PI * radio;
+    cout << "Área: " << area << endl;
+    cout << "Perímetro: " << perimetro << endl;
+}
+
+// 10. 
+bool login(string usuario, string contrasena, int& intentos) {
+    if (usuario == "usuario1" && contrasena == "secreto") {
+        return true;
+    } else {
+        ++intentos;
+        return false;
+    }
+}
+
+void manejarLogin() {
+    string usuario, contrasena;
+    int intentos = 0;
+    const int MAX_INTENTOS = 3;
+
+    while (intentos < MAX_INTENTOS) {
+        cout << "Ingrese nombre de usuario: ";
+        cin >> usuario;
+        cout << "Ingrese contraseña: ";
+        cin >> contrasena;
+
+        if (login(usuario, contrasena, intentos)) {
+            cout << "Login exitoso" << endl;
+            return;
+        } else {
+            cout << "Login fallido. Intentos restantes: " << (MAX_INTENTOS - intentos) << endl;
+        }
+    }
+    cout << "Número máximo de intentos alcanzado. Acceso denegado." << endl;
+}
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "\nMenú Principal\n";
+        cout << "1. Calcular el cuadrado de un número\n";
+        cout << "2. Calcular la media de dos números\n";
+        cout << "3. Mostrar un número en letras del 1 al 10\n";
+        cout << "4. Convertir temperatura de Celsius\n";
+        cout << "5. Mostrar si un número es par o impar\n";
+        cout << "6. Mostrar la tabla de multiplicar de un número\n";
+        cout << "7. Verificar si un carácter es un número\n";
+        cout << "9. Calcular el área y el perímetro de una circunferencia\n";
+        cout << "10. Realizar login\n";
+        cout << "0. Salir\n";
+        cout << "Seleccione una opción (1-10 o 0 para salir): ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1: ejercicio1(); break;
+            case 2: ejercicio2(); break;
+            case 3: ejercicio3(); break;
+            case 4: ejercicio4(); break;
+            case 5: ejercicio5(); break;
+            case 6: ejercicio6(); break;
+            case 7: ejercicio7(); break;
+            case 9: calcularCircunferencia(); break;
+            case 10: manejarLogin(); break;
+            case 0: cout << "Saliendo del programa." << endl; break;
+            default: cout << "Opción no válida. Intente nuevamente." << endl;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
