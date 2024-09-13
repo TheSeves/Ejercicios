@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool login(string usuario, string contrasena, int &intentos) {
+    if (usuario == "usuario1" && contrasena == "secreto") {
+        return true;
+    } else {
+        intentos++;
+        return false;
+    }
+}
+
+int main() {
+    string usuario, contrasena;
+    int intentos = 0;
+    bool acceso = false;
+
+    while (intentos < 3 && !acceso) {
+        cout << "Introduce el nombre de usuario: ";
+        cin >> usuario;
+        cout << "Introduce la contraseña: ";
+        cin >> contrasena;
+
+        acceso = login(usuario, contrasena, intentos);
+
+        if (acceso) {
+            cout << "Acceso concedido." << endl;
+        } else {
+            cout << "Usuario o contraseña incorrectos. Intentos restantes: " << 3 - intentos << endl;
+        }
+    }
+
+    if (!acceso) {
+        cout << "Has agotado los intentos." << endl;
+    }
+
+    return 0;
+}
+
